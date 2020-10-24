@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework: DEBUG
+---
+spring:
+  profiles: development
+  main:
+    banner-mode: off
+
+url: https://dev.example.com
+name: Developer Setup
+
+cors:
+  origins:
+    - mapping: "/**"
+      origin:
+        - "http://localhost:3000"
+        - "http://localhost:4200"
+      verb:
+        - "PUT"
+        - "GET"
+        - "POST"
+        - "DELETE"
+---
+spring:
+  profiles: production
+  main:
+    banner-mode: off
+
+url: https://another.example.com
+name: My Cool Prod App
+
+cors:
+  origins:
+    - mapping: "/**"
+      origin:
+        - "http://production:3000"
+        - "http://production:4200"
+---
